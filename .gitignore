@@ -1,0 +1,6 @@
+/node_modules/
+/.idea/
+.env
+docker.env
+docker-compose.yml
+/docker/react/Dockerfile
