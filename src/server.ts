@@ -7,6 +7,7 @@ import validateEnv from './utils/validateEnv';
 import PostController from "./applications/post/post.controller";
 import UserController from "./applications/user/user.controller";
 import TagController from "./applications/tag/tag.controller";
+import TravelController from "./applications/travel/travel.controller";
 
 validateEnv();
 
@@ -24,6 +25,7 @@ validateEnv();
       // new PostController(),
       new UserController(),
       // new TagController(),
+      new TravelController(),
     ],
   );
   app.listen();
