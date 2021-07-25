@@ -24,7 +24,7 @@ export default class DayController implements Controller {
 
   private getAllDays = async (request: express.Request, response: express.Response) => {
     console.log('getAllDays')
-    const days = await this.dayRepository.find();
+    const days = await this.dayRepository.find({order: {id: "ASC"}});
     response.send(days)
   }
 
