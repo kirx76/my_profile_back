@@ -4,10 +4,9 @@ import {createConnection} from 'typeorm';
 import App from './app';
 import config from './ormconfig';
 import validateEnv from './utils/validateEnv';
-import PostController from "./applications/post/post.controller";
 import UserController from "./applications/user/user.controller";
-import TagController from "./applications/tag/tag.controller";
 import TravelController from "./applications/travel/travel.controller";
+import DayController from "./applications/schedule/day/day.controller";
 
 validateEnv();
 
@@ -26,6 +25,7 @@ validateEnv();
       new UserController(),
       // new TagController(),
       new TravelController(),
+      new DayController(),
     ],
   );
   app.listen();
