@@ -20,6 +20,7 @@ export default class DayController implements Controller {
       .get(`${this.path}/:id`, this.getOneDay)
     this.router.post(this.path, validationMiddleware(CreateDayDto), this.createDay)
       .patch(`${this.path}/:id`, validationMiddleware(CreateDayDto, true), this.patchDay)
+      .delete(`${this.path}/:id`, this.deleteDay)
   }
 
   private getAllDays = async (request: express.Request, response: express.Response) => {
@@ -38,6 +39,18 @@ export default class DayController implements Controller {
       next(new PostNotFoundException(id))
     }
   }
+
+  private deleteDay = async (request: express.Request, response: express.Response, next: express.NextFunction) => {
+    console.log('deleteDay')
+    const id = request.params.id;
+    const content = await this.dayRepository.delete(id)
+    if (content.affected > 0) {
+      response.sendStatus(200)
+    } else {
+      next(new PostNotFoundException(id))
+    }
+  }
+
 
   private patchDay = async (request: express.Request, response: express.Response, next: express.NextFunction) => {
     console.log('patchDay')
